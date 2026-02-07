@@ -7,6 +7,12 @@ const messageContainer = document.getElementById("messageContainer");
 const nextPageButton = document.getElementById("nextPageButton");
 const loveEffect = document.querySelector(".love-effect");
 
+// Audio element untuk lagu
+const bgMusic = new Audio();
+bgMusic.src = "path/to/kota-ini-tak-sama-tanpamu.mp3"; // Ganti dengan path file musik Anda
+bgMusic.loop = true;
+bgMusic.volume = 0.7; // Volume 50%
+
 const messages = [
   "Happy Valentine's Day!",
   "Laut berdebur membawa rinduku, gunung berdiri menahan waktu.",
@@ -66,6 +72,11 @@ startButton.addEventListener("click", () => {
     currentMessageIndex = 0;
     messageContainer.innerHTML = "";
     showMessageWithTypingAnimation();
+
+    // Mulai memutar musik
+    bgMusic.play().catch((error) => {
+      console.log("Autoplay dicegah browser:", error);
+    });
   } else {
     shakeButton();
     alert("enter your name!");
